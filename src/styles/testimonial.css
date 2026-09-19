@@ -10,30 +10,39 @@
 
 .testimonial-marquee {
   width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding-bottom: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+.testimonial-marquee::-webkit-scrollbar {
+  height: 6px;
+}
+
+.testimonial-marquee::-webkit-scrollbar-track {
+  background: var(--color-line);
+  border-radius: 4px;
+}
+
+.testimonial-marquee::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
 }
 
 .testimonial-track {
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: testimonial-scroll 100s linear infinite;
-}
-
-@keyframes testimonial-scroll {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0%);
-  }
 }
 
 .testimonial-card {
   flex: 0 0 auto;
   width: 380px;
+  scroll-snap-align: start;
   background: #fff;
   border: 1px solid var(--color-line);
   border-radius: 20px;

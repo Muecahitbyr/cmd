@@ -1,8 +1,6 @@
 import { TESTIMONIALS } from '../data/content.js';
 import '../styles/testimonial.css';
 
-const CARDS = [...TESTIMONIALS, ...TESTIMONIALS];
-
 function Stars() {
   return (
     <div className="testimonial-stars">
@@ -23,8 +21,8 @@ export default function Testimonial() {
 
       <div className="testimonial-marquee reveal-fade">
         <div className="testimonial-track">
-          {CARDS.map((t, i) => (
-            <div className="testimonial-card" key={`${t.author}-${i}`} aria-hidden={i >= TESTIMONIALS.length}>
+          {TESTIMONIALS.map((t) => (
+            <div className="testimonial-card" key={t.author}>
               <Stars />
               <p className="testimonial-quote">{t.quote}</p>
               <div className="testimonial-author">
