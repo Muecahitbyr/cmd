@@ -8,22 +8,9 @@ export const CONTACT = {
 
 export const NAV_LINKS = [
   { label: 'Leistungen', href: '#leistungen', type: 'anchor' },
-  { label: 'Bereiche', href: '#bereiche', type: 'anchor' },
   { label: 'Produkte', href: '/shop', type: 'route' },
   { label: 'Galerie', href: '#galerie', type: 'anchor' },
   { label: 'Kontakt', href: '#kontakt', type: 'anchor' },
-];
-
-export const SERVICE_AREAS = [
-  { title: 'Büro', image: 'service-buero.jpg', icon: 'ri-building-2-line' },
-  { title: 'Praxen', image: 'area-medical.jpg', icon: 'ri-hospital-line' },
-  { title: 'Baustelle', image: 'area-construction.jpg', icon: 'ri-hammer-line' },
-  { title: 'Industrie', image: 'area-industry.jpg', icon: 'ri-settings-3-line' },
-  { title: 'Treppenhaus', image: 'area-stairs.jpg', icon: 'ri-signpost-line' },
-  { title: 'Glas', image: 'area-glass.jpg', icon: 'ri-drop-line' },
-  { title: 'Fassade', image: 'area-facade.jpg', icon: 'ri-building-4-line' },
-  { title: 'Kindergarten', image: 'area-kindergarten.jpg', icon: 'ri-parent-line' },
-  { title: 'Grundreinigung', image: 'area-deepclean.jpg', icon: 'ri-sparkling-2-line' },
 ];
 
 export const CLEANING_TYPES = [
