@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { img } from '../lib/images.js';
@@ -9,6 +9,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoHero() {
   const sectionRef = useRef(null);
+  const videoRef = useRef(null);
+  const [needsPlayButton, setNeedsPlayButton] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise) {
+      playPromise.catch(() => setNeedsPlayButton(true));
+    }
+  }, []);
+
+  const handleManualPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video
+      .play()
+      .then(() => setNeedsPlayButton(false))
+      .catch(() => {});
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -41,12 +63,32 @@ export default function VideoHero() {
   return (
     <section className="video-hero" ref={sectionRef}>
       <div className="video-hero-media">
-        <video className="video-hero-clip" muted loop autoPlay playsInline poster={img('baustelle1-poster.jpg')}>
+        <video
+          ref={videoRef}
+          className="video-hero-clip"
+          muted
+          loop
+          autoPlay
+          playsInline
+          preload="auto"
+          poster={img('baustelle1-poster.jpg')}
+        >
           <source src="/videos/baustelle1.mp4" type="video/mp4" />
         </video>
       </div>
 
       <div className="video-hero-overlay" />
+
+      {needsPlayButton && (
+        <button
+          type="button"
+          className="video-hero-play"
+          onClick={handleManualPlay}
+          aria-label="Video abspielen"
+        >
+          <i className="ri-play-fill" />
+        </button>
+      )}
 
       <div className="video-hero-content container">
         <span className="video-hero-eyebrow eyebrow">CMD Industrielle Reinigung</span>
