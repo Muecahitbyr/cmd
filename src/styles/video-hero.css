@@ -44,7 +44,8 @@
 .video-hero-eyebrow {
   opacity: 0;
   transform: translateY(20px);
-  color: var(--color-accent-light);
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
 
 .video-hero-eyebrow::before {
