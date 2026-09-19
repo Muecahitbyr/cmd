@@ -24,9 +24,9 @@ export default function Home() {
       <Partners />
       <CleaningTypes />
       <Stats />
+      <Testimonial />
       <DetailedServices />
       <Gallery />
-      <Testimonial />
       <CTASection />
     </main>
   );
