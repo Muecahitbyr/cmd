@@ -126,7 +126,7 @@ export const PARTNERS = [
 export const STATS = [
   { value: 75, suffix: '+', label: 'Zufriedene Kunden' },
   { value: 5, suffix: '+', label: 'Jahre Erfahrung' },
-  { value: 98, suffix: '%', label: 'Kundenzufriedenheit' },
+  { value: 100, suffix: '%', label: 'Kundenzufriedenheit' },
   { value: 24, suffix: '/7', label: 'Erreichbarkeit' },
 ];
 
