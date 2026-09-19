@@ -22,10 +22,6 @@
   animation: testimonial-scroll 100s linear infinite;
 }
 
-.testimonial-marquee:hover .testimonial-track {
-  animation-play-state: paused;
-}
-
 @keyframes testimonial-scroll {
   from {
     transform: translateX(-50%);
