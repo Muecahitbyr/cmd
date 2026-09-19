@@ -149,10 +149,8 @@
 }
 
 @media (max-width: 640px) {
-  .hero {
-    height: 82vh;
-    min-height: 620px;
-    max-height: 720px;
+  .hero-bg {
+    inset: 22% 0 22% 0;
   }
   .hero-badges {
     gap: 22px;
