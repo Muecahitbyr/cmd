@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      var resetScrollIfNoHash = function () {
+        if (!location.hash) window.scrollTo(0, 0);
+      };
+      resetScrollIfNoHash();
+      window.addEventListener('pageshow', resetScrollIfNoHash);
+      window.addEventListener('load', resetScrollIfNoHash);
+    </script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CMD Industrielle Reinigung bietet professionelle Gebäudereinigung in Augsburg, Landsberg am Lech, Kaufbeuren und Umgebung. Wöchentliche, tägliche, einmalige Reinigung und Grundreinigung für Büros, Industrieanlagen und Gewerbe." />
+    <meta name="keywords" content="Gebäudereinigung Augsburg, Büroreinigung, Industriereinigung, professionelle Reinigung, Reinigungsfirma Augsburg, Gebäudereinigung Bayern, CMD Reinigung" />
+    <meta name="geo.position" content="48.370545;10.897790" />
+    <meta name="geo.region" content="DE-BY" />
+    <meta name="geo.placename" content="Augsburg, Landsberg am Lech, Kaufbeuren" />
+    <meta name="ICBM" content="48.370545, 10.897790" />
+
+    <title>CMD Reinigungsservice | Professionelle Gebäudereinigung Augsburg</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="CMD Reinigungsservice | Professionelle Gebäudereinigung" />
+    <meta property="og:description" content="CMD Industrielle Reinigung bietet professionelle Gebäudereinigung in Augsburg, Landsberg am Lech, Kaufbeuren und Umgebung. Wöchentliche, tägliche, einmalige Reinigung und Grundreinigung für Büros, Industrieanlagen und Gewerbe." />
+    <meta property="og:url" content="https://www.cmd-industriell.de" />
+    <meta property="og:site_name" content="CMD" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CMD Reinigungsservice | Professionelle Gebäudereinigung" />
+    <meta name="twitter:description" content="CMD Industrielle Reinigung bietet professionelle Gebäudereinigung in Augsburg, Landsberg am Lech, Kaufbeuren und Umgebung. Wöchentliche, tägliche, einmalige Reinigung und Grundreinigung für Büros, Industrieanlagen und Gewerbe." />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17763551186"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17763551186');
+    </script>
+    <meta name="google-site-verification" content="8eo_7xMtlab2NnhktIoadtk0FoMyy213J68lI3MU6LM" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

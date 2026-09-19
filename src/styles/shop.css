@@ -1,0 +1,356 @@
+.shop-header {
+  padding: 200px 0 80px;
+  background: var(--color-bg-soft);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.shop-header h1 {
+  margin-top: 16px;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  max-width: 680px;
+}
+
+.shop-products {
+  padding-top: 100px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-line);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px -30px rgba(10, 12, 16, 0.22);
+}
+
+.product-card-media {
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.product-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-card-body {
+  padding: 28px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-card-body h3 {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.product-card-body > p {
+  margin-top: 12px;
+  color: var(--color-ink-soft);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.product-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.product-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+}
+
+.product-features i {
+  color: var(--color-accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.product-card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 26px;
+  flex: 1;
+  align-items: flex-end;
+}
+
+.product-card-actions .btn {
+  padding: 13px 22px;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.shop-benefits {
+  background: var(--color-navy);
+  padding: 80px 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  color: #fff;
+}
+
+.benefit-item i {
+  font-size: 1.7rem;
+  color: var(--color-accent-light);
+  flex-shrink: 0;
+}
+
+.benefit-item h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.benefit-item p {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+}
+
+/* Modal */
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(3, 5, 12, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.product-modal-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 860px;
+  width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.product-modal-media {
+  background: var(--color-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.product-modal-media img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.product-modal-body {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-modal-body h3 {
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.product-modal-body > p {
+  margin-top: 14px;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+
+.product-modal-body .product-features {
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.product-modal-body .btn {
+  align-self: flex-start;
+}
+
+.product-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(10, 12, 16, 0.06);
+  color: var(--color-ink);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.product-modal-close:hover {
+  background: rgba(10, 12, 16, 0.12);
+  transform: rotate(90deg);
+}
+
+/* Inquiry form */
+.inquiry-form {
+  max-width: 720px;
+  background: var(--color-bg-soft);
+  border-radius: 24px;
+  padding: 44px;
+}
+
+.inquiry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.inquiry-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.inquiry-full {
+  grid-column: 1 / -1;
+}
+
+.inquiry-form input,
+.inquiry-form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  color: var(--color-ink);
+  resize: vertical;
+}
+
+.inquiry-form input:focus,
+.inquiry-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.inquiry-products {
+  margin-top: 24px;
+}
+
+.inquiry-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  margin-bottom: 12px;
+}
+
+.inquiry-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.inquiry-checkbox {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.inquiry-checkbox input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--color-accent);
+}
+
+.inquiry-form textarea {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.inquiry-form > .btn {
+  margin-top: 26px;
+}
+
+.inquiry-note {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--color-accent-dark);
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .product-modal-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .inquiry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inquiry-form {
+    padding: 28px;
+  }
+}
