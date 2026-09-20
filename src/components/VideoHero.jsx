@@ -15,21 +15,51 @@ export default function VideoHero() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
     video.muted = true;
-    const playPromise = video.play();
-    if (playPromise) {
-      playPromise.catch(() => setNeedsPlayButton(true));
-    }
+    video.defaultMuted = true;
+
+    const showFallback = () => setNeedsPlayButton(true);
+    const hideFallback = () => setNeedsPlayButton(false);
+
+    const attemptPlay = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(showFallback);
+      }
+    };
+
+    // Video-Events sind die verlässliche Quelle für den UI-Status, nicht nur
+    // das Ergebnis eines einzelnen play()-Aufrufs (z. B. wenn iOS die
+    // Wiedergabe erst verzögert erlaubt oder im Hintergrund pausiert).
+    video.addEventListener('playing', hideFallback);
+    video.addEventListener('pause', showFallback);
+    video.addEventListener('stalled', showFallback);
+    video.addEventListener('error', showFallback);
+
+    attemptPlay();
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible' && video.paused) {
+        attemptPlay();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      video.removeEventListener('playing', hideFallback);
+      video.removeEventListener('pause', showFallback);
+      video.removeEventListener('stalled', showFallback);
+      video.removeEventListener('error', showFallback);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, []);
 
   const handleManualPlay = () => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
-    video
-      .play()
-      .then(() => setNeedsPlayButton(false))
-      .catch(() => {});
+    video.play().catch(() => {});
   };
 
   useEffect(() => {
@@ -67,9 +97,11 @@ export default function VideoHero() {
           ref={videoRef}
           className="video-hero-clip"
           muted
+          defaultMuted
           loop
           autoPlay
           playsInline
+          webkit-playsinline="true"
           preload="auto"
           poster={img('baustelle1-poster.jpg')}
         >
