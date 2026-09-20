@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import VideoHero from '../components/VideoHero.jsx';
-import Hero from '../components/Hero.jsx';
 import Partners from '../components/Partners.jsx';
 import CleaningTypes from '../components/CleaningTypes.jsx';
 import Stats from '../components/Stats.jsx';
@@ -20,7 +19,6 @@ export default function Home() {
   return (
     <main id="home-page">
       <VideoHero />
-      <Hero />
       <Partners />
       <CleaningTypes />
       <Stats />

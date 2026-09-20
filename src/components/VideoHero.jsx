@@ -130,7 +130,10 @@ export default function VideoHero() {
       <button
         type="button"
         className="hero-scroll-cue video-hero-cue"
-        onClick={() => scrollToTarget('#start')}
+        onClick={() => {
+          const el = sectionRef.current;
+          if (el) scrollToTarget(el.offsetTop + el.offsetHeight, 0);
+        }}
         aria-label="Nach unten scrollen"
       >
         <span />
