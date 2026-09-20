@@ -31,7 +31,7 @@ export default function CTASection() {
     <section className="cta-section" id="kontakt" ref={sectionRef}>
       <div className="cta-glow" ref={glowRef} />
       <div className="container cta-inner reveal">
-        <h2>Bereit für makellose Sauberkeit?</h2>
+        <h2>Ihr Erfolg beginnt mit unserer Reinigung</h2>
         <p>Kontaktieren Sie uns für ein unverbindliches Angebot</p>
         <button type="button" className="btn btn-primary" onClick={() => openBooking()}>
           Jetzt Termin vereinbaren
