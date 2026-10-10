@@ -33,6 +33,10 @@
   border-radius: 8px;
 }
 
+.partners-row img:nth-child(2) {
+  height: 48px;
+}
+
 .partners-text {
   font-weight: 600;
   color: var(--color-ink-soft);
