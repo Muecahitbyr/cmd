@@ -1,6 +1,13 @@
 .gallery {
   background: var(--color-bg-soft);
   overflow: hidden;
+  padding: 140px 0;
+}
+
+@media (max-width: 900px) {
+  .gallery {
+    padding: 90px 0;
+  }
 }
 
 .gallery-grid {
