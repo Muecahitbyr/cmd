@@ -30,6 +30,8 @@
 
 html {
   scroll-behavior: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -40,6 +42,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  width: 100%;
 }
 
 img {

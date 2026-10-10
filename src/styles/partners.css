@@ -34,12 +34,17 @@
 }
 
 .partners-row img:nth-child(2) {
-  height: 48px;
+  height: 58px;
 }
 
 .partners-text {
-  font-weight: 600;
-  color: var(--color-ink-soft);
-  font-size: 0.95rem;
+  flex-shrink: 0;
+  padding: 7px 16px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }

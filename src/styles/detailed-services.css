@@ -158,10 +158,12 @@
     display: none;
   }
 
-  .service-row-body h3 {
+  .service-row-body h3,
+  .service-row.is-active .service-row-body h3 {
     font-size: 0.95rem;
     text-align: center;
     margin-top: 12px;
+    color: var(--color-ink);
   }
 
   .service-row-image-mobile {
