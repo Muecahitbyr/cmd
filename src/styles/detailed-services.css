@@ -156,6 +156,20 @@
     overflow: hidden;
     opacity: 0;
     box-shadow: 0 6px 18px -10px rgba(10, 12, 16, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .service-row:active {
+    transform: scale(0.96);
+    box-shadow: 0 3px 10px -6px rgba(10, 12, 16, 0.3);
+  }
+
+  .service-row-image-mobile {
+    transition: transform 0.5s ease;
+  }
+
+  .service-row:active .service-row-image-mobile {
+    transform: scale(1.08);
   }
 
   .service-row:last-child:nth-child(odd) {

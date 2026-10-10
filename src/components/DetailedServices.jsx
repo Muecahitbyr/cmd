@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { img } from '../lib/images.js';
 import { DETAILED_SERVICES } from '../data/content.js';
 import { useBookingModal } from '../context/BookingModalContext.jsx';
+import ServiceDetailModal from './ServiceDetailModal.jsx';
 import '../styles/detailed-services.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +13,7 @@ export default function DetailedServices() {
   const sectionRef = useRef(null);
   const rowRefs = useRef([]);
   const [active, setActive] = useState(0);
+  const [detailService, setDetailService] = useState(null);
   const { openBooking } = useBookingModal();
 
   useEffect(() => {
@@ -78,8 +80,8 @@ export default function DetailedServices() {
                     <button
                       type="button"
                       className="service-row-cta"
-                      onClick={() => openBooking(service.title)}
-                      aria-label={`Termin für ${service.title} buchen`}
+                      onClick={() => setDetailService(service)}
+                      aria-label={`Details zu ${service.title} anzeigen`}
                     >
                       {service.title}
                     </button>
@@ -107,6 +109,17 @@ export default function DetailedServices() {
           </div>
         </div>
       </div>
+
+      {detailService && (
+        <ServiceDetailModal
+          service={detailService}
+          onClose={() => setDetailService(null)}
+          onBook={() => {
+            openBooking(detailService.title);
+            setDetailService(null);
+          }}
+        />
+      )}
     </section>
   );
 }
