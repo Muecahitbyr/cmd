@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { img } from '../lib/images.js';
+import { getLenis } from '../lib/smoothScroll.js';
 import '../styles/service-modal.css';
 
 export default function ServiceDetailModal({ service, onClose, onBook }) {
@@ -12,9 +13,12 @@ export default function ServiceDetailModal({ service, onClose, onBook }) {
     const onKey = (e) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
+    const lenis = getLenis();
+    lenis?.stop();
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      lenis?.start();
     };
   }, [onClose]);
 

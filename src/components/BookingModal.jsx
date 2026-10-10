@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { DETAILED_SERVICES, CONTACT } from '../data/content.js';
 import { useBookingModal } from '../context/BookingModalContext.jsx';
+import { getLenis } from '../lib/smoothScroll.js';
 import '../styles/booking-modal.css';
 
 const EMPTY = { name: '', email: '', phone: '', service: '', date: '', time: '', message: '' };
@@ -24,9 +25,12 @@ export default function BookingModal() {
     const onKey = (e) => e.key === 'Escape' && closeBooking();
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
+    const lenis = getLenis();
+    lenis?.stop();
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      lenis?.start();
     };
   }, [isOpen, closeBooking]);
 

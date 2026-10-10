@@ -211,7 +211,8 @@
     right: 0;
     bottom: 0;
     padding: 10px 6px;
-    background: linear-gradient(180deg, var(--color-accent-light) 0%, var(--color-accent-dark) 100%);
+    background: linear-gradient(180deg, rgba(6, 10, 20, 0) 0%, rgba(6, 10, 20, 0.55) 35%, rgba(6, 10, 20, 0.88) 100%);
+    backdrop-filter: blur(2px);
     color: #fff;
     font-size: 0.82rem;
     font-weight: 700;
