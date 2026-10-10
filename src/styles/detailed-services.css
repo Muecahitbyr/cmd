@@ -188,9 +188,11 @@
   }
 
   .service-row-media-mobile {
+    display: block;
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
+    text-align: left;
   }
 
   .service-row-image-mobile {

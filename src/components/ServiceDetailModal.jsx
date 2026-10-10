@@ -11,7 +11,11 @@ export default function ServiceDetailModal({ service, onClose, onBook }) {
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
   }, [onClose]);
 
   useEffect(() => {

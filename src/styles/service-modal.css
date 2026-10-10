@@ -63,6 +63,7 @@
   position: absolute;
   inset: -8%;
   width: 116%;
+  max-width: none;
   height: 116%;
   object-fit: cover;
   will-change: transform;

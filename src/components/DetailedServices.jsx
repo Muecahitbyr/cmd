@@ -75,17 +75,15 @@ export default function DetailedServices() {
                       <li key={s}>{s}</li>
                     ))}
                   </ul>
-                  <div className="service-row-media-mobile">
-                    <img className="service-row-image-mobile" src={img(service.image)} alt={service.title} loading="lazy" />
-                    <button
-                      type="button"
-                      className="service-row-cta"
-                      onClick={() => setDetailService(service)}
-                      aria-label={`Details zu ${service.title} anzeigen`}
-                    >
-                      {service.title}
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className="service-row-media-mobile"
+                    onClick={() => setDetailService(service)}
+                    aria-label={`Details zu ${service.title} anzeigen`}
+                  >
+                    <img className="service-row-image-mobile" src={img(service.image)} alt="" loading="lazy" />
+                    <span className="service-row-cta">{service.title}</span>
+                  </button>
                 </div>
               </div>
             ))}
