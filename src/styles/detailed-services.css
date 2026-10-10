@@ -194,13 +194,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 14px 10px;
+    padding: 10px 6px;
     background: linear-gradient(180deg, var(--color-accent-light) 0%, var(--color-accent-dark) 100%);
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: 700;
     text-align: center;
     line-height: 1.25;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
     transition: filter 0.25s ease;
   }
 
