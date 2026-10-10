@@ -73,14 +73,17 @@ export default function DetailedServices() {
                       <li key={s}>{s}</li>
                     ))}
                   </ul>
-                  <img className="service-row-image-mobile" src={img(service.image)} alt={service.title} loading="lazy" />
-                  <button
-                    type="button"
-                    className="btn btn-ghost service-row-cta"
-                    onClick={() => openBooking(service.title)}
-                  >
-                    Termin buchen
-                  </button>
+                  <div className="service-row-media-mobile">
+                    <img className="service-row-image-mobile" src={img(service.image)} alt={service.title} loading="lazy" />
+                    <button
+                      type="button"
+                      className="service-row-cta"
+                      onClick={() => openBooking(service.title)}
+                      aria-label={`Termin für ${service.title} buchen`}
+                    >
+                      {service.title}
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
