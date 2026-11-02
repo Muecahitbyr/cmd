@@ -20,11 +20,11 @@ export default function Home() {
     <main id="home-page">
       <VideoHero />
       <Partners />
+      <DetailedServices />
       <CleaningTypes />
+      <Gallery />
       <Stats />
       <Testimonial />
-      <DetailedServices />
-      <Gallery />
       <CTASection />
     </main>
   );
