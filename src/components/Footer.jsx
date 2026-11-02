@@ -60,7 +60,13 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <i className="ri-map-pin-line" /> {CONTACT.location}
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.location)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="ri-map-pin-line" /> {CONTACT.location}
+              </a>
             </li>
           </ul>
         </div>
