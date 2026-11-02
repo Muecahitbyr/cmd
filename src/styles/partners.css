@@ -6,8 +6,9 @@
 
 .partners-inner {
   display: flex;
-  align-items: center;
-  gap: 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .partners-label {
