@@ -11,6 +11,8 @@ export default function BookingModal() {
   const { isOpen, presetService, closeBooking } = useBookingModal();
   const [fields, setFields] = useState(EMPTY);
   const [sent, setSent] = useState(false);
+  const [sentVia, setSentVia] = useState('server');
+  const [sending, setSending] = useState(false);
   const panelRef = useRef(null);
 
   useEffect(() => {
@@ -38,26 +40,41 @@ export default function BookingModal() {
 
   const update = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSending(true);
 
-    const lines = [
-      `Name: ${fields.name}`,
-      `E-Mail: ${fields.email}`,
-      `Telefon: ${fields.phone}`,
-      fields.service && `Dienstleistung: ${fields.service}`,
-      fields.date && `Wunschdatum: ${fields.date}`,
-      fields.time && `Uhrzeit: ${fields.time}`,
-      '',
-      fields.message,
-    ].filter(Boolean);
+    try {
+      const res = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fields),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setSentVia('server');
+      setSent(true);
+    } catch {
+      const lines = [
+        `Name: ${fields.name}`,
+        `E-Mail: ${fields.email}`,
+        `Telefon: ${fields.phone}`,
+        fields.service && `Dienstleistung: ${fields.service}`,
+        fields.date && `Wunschdatum: ${fields.date}`,
+        fields.time && `Uhrzeit: ${fields.time}`,
+        '',
+        fields.message,
+      ].filter(Boolean);
 
-    const mailHref = `${CONTACT.mailHref.split('?')[0]}?subject=${encodeURIComponent(
-      'Terminanfrage',
-    )}&body=${encodeURIComponent(lines.join('\n'))}`;
+      const mailHref = `${CONTACT.mailHref.split('?')[0]}?subject=${encodeURIComponent(
+        'Terminanfrage',
+      )}&body=${encodeURIComponent(lines.join('\n'))}`;
 
-    window.location.href = mailHref;
-    setSent(true);
+      window.location.href = mailHref;
+      setSentVia('mailto');
+      setSent(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -78,8 +95,12 @@ export default function BookingModal() {
         {sent ? (
           <div className="booking-success">
             <i className="ri-checkbox-circle-fill" />
-            <h4>Anfrage bereit zum Versand</h4>
-            <p>Ihr E-Mail-Programm öffnet sich mit der ausgefüllten Terminanfrage an {CONTACT.email}.</p>
+            <h4>{sentVia === 'server' ? 'Anfrage erfolgreich gesendet' : 'Anfrage bereit zum Versand'}</h4>
+            <p>
+              {sentVia === 'server'
+                ? 'Ihre Terminanfrage wurde direkt an uns übermittelt. Wir melden uns zeitnah bei Ihnen.'
+                : `Ihr E-Mail-Programm öffnet sich mit der ausgefüllten Terminanfrage an ${CONTACT.email}.`}
+            </p>
             <button type="button" className="btn btn-primary" onClick={closeBooking}>
               Schließen
             </button>
@@ -153,8 +174,8 @@ export default function BookingModal() {
               </span>
             </label>
 
-            <button type="submit" className="btn btn-primary booking-submit">
-              Termin anfragen <i className="ri-send-plane-fill" />
+            <button type="submit" className="btn btn-primary booking-submit" disabled={sending}>
+              {sending ? 'Wird gesendet…' : 'Termin anfragen'} <i className="ri-send-plane-fill" />
             </button>
           </form>
         )}
