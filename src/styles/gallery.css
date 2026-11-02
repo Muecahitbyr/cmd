@@ -90,6 +90,25 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  touch-action: pan-y;
+}
+
+.lightbox-enter-next {
+  animation: lightboxEnterNext 0.4s var(--ease-out);
+}
+
+.lightbox-enter-prev {
+  animation: lightboxEnterPrev 0.4s var(--ease-out);
+}
+
+@keyframes lightboxEnterNext {
+  from { opacity: 0; transform: translateX(32px) scale(0.98); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes lightboxEnterPrev {
+  from { opacity: 0; transform: translateX(-32px) scale(0.98); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
 }
 
 .lightbox figure img {

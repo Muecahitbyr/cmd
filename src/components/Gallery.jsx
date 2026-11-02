@@ -1,17 +1,41 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { img } from '../lib/images.js';
 import { GALLERY_IMAGES } from '../data/content.js';
 import '../styles/gallery.css';
 
+const SWIPE_THRESHOLD = 50;
+
 export default function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [direction, setDirection] = useState(1);
+  const touchStart = useRef(null);
 
   const close = useCallback(() => setLightboxIndex(null), []);
-  const prev = useCallback(
-    () => setLightboxIndex((i) => (i - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length),
-    [],
-  );
-  const next = useCallback(() => setLightboxIndex((i) => (i + 1) % GALLERY_IMAGES.length), []);
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setLightboxIndex((i) => (i - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+  }, []);
+  const next = useCallback(() => {
+    setDirection(1);
+    setLightboxIndex((i) => (i + 1) % GALLERY_IMAGES.length);
+  }, []);
+
+  const handleTouchStart = (e) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next();
+      else prev();
+    }
+  };
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -64,7 +88,13 @@ export default function Gallery() {
           >
             <i className="ri-arrow-left-s-line" />
           </button>
-          <figure onClick={(e) => e.stopPropagation()}>
+          <figure
+            key={lightboxIndex}
+            className={direction > 0 ? 'lightbox-enter-next' : 'lightbox-enter-prev'}
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <img src={img(GALLERY_IMAGES[lightboxIndex].image)} alt={GALLERY_IMAGES[lightboxIndex].caption} />
             <figcaption>{GALLERY_IMAGES[lightboxIndex].caption}</figcaption>
           </figure>
