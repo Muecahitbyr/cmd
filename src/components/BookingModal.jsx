@@ -124,6 +124,7 @@ export default function BookingModal() {
                     {s.title}
                   </option>
                 ))}
+                <option value="Sonstiges">Sonstiges</option>
               </select>
             </label>
 
