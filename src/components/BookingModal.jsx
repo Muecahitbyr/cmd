@@ -62,7 +62,12 @@ export default function BookingModal() {
 
   return (
     <div className="booking-backdrop" onClick={closeBooking}>
-      <div className="booking-panel" ref={panelRef} onClick={(e) => e.stopPropagation()}>
+      <div
+        className="booking-panel"
+        ref={panelRef}
+        data-lenis-prevent
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="booking-header">
           <h3>Termin buchen</h3>
           <button type="button" className="booking-close" onClick={closeBooking} aria-label="Schließen">

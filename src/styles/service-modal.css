@@ -17,6 +17,7 @@
   max-width: 480px;
   max-height: 88vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: #fff;
   border-radius: 24px;
 }

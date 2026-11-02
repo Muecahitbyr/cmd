@@ -16,7 +16,7 @@ export default function ProductModal({ product, onClose }) {
 
   return (
     <div className="product-modal" onClick={onClose}>
-      <div className="product-modal-panel" onClick={(e) => e.stopPropagation()}>
+      <div className="product-modal-panel" data-lenis-prevent onClick={(e) => e.stopPropagation()}>
         <button type="button" className="product-modal-close" onClick={onClose} aria-label="Schließen">
           <i className="ri-close-line" />
         </button>

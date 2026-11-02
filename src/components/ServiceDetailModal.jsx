@@ -51,7 +51,12 @@ export default function ServiceDetailModal({ service, onClose, onBook }) {
 
   return (
     <div className="service-modal" onClick={onClose}>
-      <div className="service-modal-panel" ref={panelRef} onClick={(e) => e.stopPropagation()}>
+      <div
+        className="service-modal-panel"
+        ref={panelRef}
+        data-lenis-prevent
+        onClick={(e) => e.stopPropagation()}
+      >
         <button type="button" className="service-modal-close" onClick={onClose} aria-label="Schließen">
           <i className="ri-close-line" />
         </button>
