@@ -16,6 +16,7 @@
   width: 100%;
   max-width: 480px;
   max-height: 88vh;
+  max-height: 88dvh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #fff;
@@ -130,5 +131,6 @@
 @media (max-width: 480px) {
   .service-modal-panel {
     max-height: 92vh;
+    max-height: 92dvh;
   }
 }
